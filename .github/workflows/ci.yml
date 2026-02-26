@@ -1,0 +1,35 @@
+﻿name: Check the Build and Test Successful
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  Continous-Integration:
+  name: Perform Build Check and run Tests
+  build:
+    runs-on: ubuntu-latest
+    # strategy: #This defines a way to run your job multiple times in a structured way.
+    #   matrix: ##A matrix allows you to specify different variations of your environment. Each variation becomes a separate job that runs in parallel.
+    #     node-version: [18.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        # with:
+        #   node-version: ${{ matrix.node-version }}
+        #   cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the Typescript build
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test
