@@ -23,9 +23,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-express-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/simple-express-app:latest
       - name: Verify Docker Image
-        run: docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/simple-express-app:latest node -v
+        run: docker run --rm ${{ secrets.DOCKER_USERNAME }}/simple-express-app:latest node -v
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v0.1.9
