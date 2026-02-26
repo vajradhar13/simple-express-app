@@ -8,9 +8,9 @@ on:
 
 jobs:
   Continous-Integration:
-  name: Perform Build Check and run Tests
-  build:
-    runs-on: ubuntu-latest
+    name: Perform Build Check and run Tests
+    build:
+      runs-on: ubuntu-latest
     # strategy: #This defines a way to run your job multiple times in a structured way.
     #   matrix: ##A matrix allows you to specify different variations of your environment. Each variation becomes a separate job that runs in parallel.
     #     node-version: [18.x]
